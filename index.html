@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pimpale Traders — Quality Rice</title>
+  <meta name="description" content="Pimpale Traders — Premium rice wholesaler & retailer. Basmati, Indrayani, Daptari & more. Bulk orders welcome.">
+  <meta property="og:title" content="Pimpale Traders — Quality Rice">
+  <meta property="og:description" content="Premium rice varieties at honest prices.">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Pimpale Traders",
+    "description": "Family-run rice wholesaler and retailer providing premium quality rice.",
+    "telephone": "+919112295256",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Your address here",
+      "addressLocality": "",
+      "addressRegion": "",
+      "postalCode": "",
+      "addressCountry": "IN"
+    }
+  }
+  </script>
+  <style>
+    :root{--accent:#1f7a32;--muted:#6b7280;--card:#ffffff;--bg:#f6f7f8;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial}
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#fff);color:#0f172a}
+    header{background:var(--card);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:0 6px 18px rgba(16,24,40,0.06);position:sticky;top:0;z-index:40}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#54b987);display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:18px}
+    .brand h1{margin:0;font-size:18px}
+    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
+    .container{max-width:1100px;margin:24px auto;padding:0 20px}
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center;margin-bottom:24px}
+    .hero-card{background:var(--card);padding:22px;border-radius:14px;box-shadow:0 8px 28px rgba(15,23,42,0.06)}
+    .hero h2{margin:0 0 8px 0;font-size:26px}
+    .hero p{margin:0;color:var(--muted)}
+    .hero-cta{margin-top:14px;display:flex;gap:10px}
+    .btn{background:var(--accent);color:white;padding:10px 14px;border-radius:10px;border:0;font-weight:700;cursor:pointer}
+    .ghost{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+    .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+    .card{background:var(--card);border-radius:12px;padding:12px;box-shadow:0 6px 18px rgba(16,24,40,0.04);display:flex;flex-direction:column}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .meta{display:flex;align-items:center;justify-content:space-between;padding-top:10px}
+    .price{font-weight:800;color:var(--accent)}
+    .desc{color:var(--muted);font-size:14px;margin-top:6px}
+    footer{margin-top:36px;padding:20px 0;color:var(--muted)}
+    .contact{display:flex;gap:12px;align-items:center}
+    .whatsapp{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:white;padding:8px 10px;border-radius:10px;text-decoration:none}
+    .cart-btn{position:relative}
+    .cart-count{position:absolute;top:-8px;right:-8px;background:#ff4d4f;color:white;border-radius:999px;padding:3px 7px;font-size:12px}
+    .cart-drawer{position:fixed;right:16px;bottom:16px;background:var(--card);width:340px;border-radius:12px;box-shadow:0 12px 40px rgba(2,6,23,0.2);overflow:hidden;transform:translateY(120%);transition:transform .28s ease-in-out;z-index:60}
+    .cart-drawer.open{transform:translateY(0)}
+    .cart-header{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border-bottom:1px solid #f0f0f0}
+    .cart-items{max-height:320px;overflow:auto;padding:10px}
+    .cart-row{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px dashed #eee}
+    .cart-row img{width:56px;height:44px;object-fit:cover;border-radius:6px}
+    .qty{display:flex;align-items:center;gap:6px}
+    .qty button{background:#f3f4f6;border:0;padding:6px 8px;border-radius:8px;cursor:pointer}
+    .cart-footer{padding:12px;border-top:1px solid #f0f0f0}
+    @media (max-width:980px){.hero{grid-template-columns:1fr 1fr}.product-grid{grid-template-columns:repeat(2,1fr)}.cart-drawer{right:8px;width:320px}}
+    @media (max-width:640px){.hero{grid-template-columns:1fr}.product-grid{grid-template-columns:1fr}.logo{width:48px;height:48px}.cart-drawer{width:92%;left:4%;right:4%}}
+    .note{font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo" aria-hidden>PT</div>
+      <div>
+        <h1>Pimpale Traders</h1>
+        <div class="note">Quality rice • Fresh stock • Wholesale & Retail</div>
+      </div>
+    </div>
+    <nav>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <button class="btn cart-btn" id="openCartBtn" aria-label="Open cart">Cart <span class="cart-count" id="cartCount">0</span></button>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-card">
+        <h2>Welcome to Pimpale Traders</h2>
+        <p>Supplying premium rice varieties at honest prices. Fresh, clean, and perfect for every meal — from everyday rice to special biryani blends.</p>
+        <div class="hero-cta">
+          <button class="btn" onclick="scrollToSection('products')">See Products</button>
+          <a class="btn ghost" href="#contact">Contact Us</a>
+        </div>
+        <div style="margin-top:14px" class="note">Prices shown are per kg. For bulk/wholesale rates, contact us via WhatsApp.</div>
+      </div>
+
+      <aside class="hero-card" style="text-align:center">
+        <img src="https://images.unsplash.com/photo-1542444459-db8f6f603c3f?q=80&w=900&auto=format&fit=crop" alt="Rice closeup" loading="lazy" style="width:100%;border-radius:10px;object-fit:cover;height:240px">
+        <div style="margin-top:12px;font-weight:700">Fresh stock available</div>
+        <div class="note">Pickup available from our warehouse or we can arrange delivery.</div>
+      </aside>
+    </section>
+
+    <section id="products">
+      <h3 style="margin-bottom:12px">Our Products</h3>
+      <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <section id="about" style="margin-top:28px">
+      <h3>About Pimpale Traders</h3>
+      <p class="note">We are a family-run rice wholesaler and retailer focused on delivering clean, high-quality rice varieties. Trusted by local restaurants and households. If you'd like custom packaging or branded sacks, message us!</p>
+    </section>
+
+    <section id="contact" style="margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+      <div style="flex:1;min-width:240px">
+        <h3>Contact</h3>
+        <p class="note">Phone: <strong><a href="tel:+919112295256">+91 9112295256</a></strong></p>
+        <p class="note">Address: <span>Your address here</span></p>
+        <p class="note">Email: <span>pimpale@example.com</span></p>
+        <div style="margin-top:10px">
+          <a class="whatsapp" href="https://wa.me/919112295256?text=Hello%2C%20I%20want%20to%20order%20rice%20from%20Pimpale%20Traders." target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+        </div>
+      </div>
+      <div style="flex:1;min-width:240px;text-align:right">
+        <h3>Quick order</h3>
+        <p class="note">Click "Order" on any product to create a WhatsApp message to place your order. Use cart for multi-item orders and a neat summary.</p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="note">© Pimpale Traders — All rights reserved.</div>
+    </footer>
+  </main>
+
+  <!-- Cart drawer -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <strong>Cart</strong>
+      <div><button id="closeCartBtn" class="ghost" aria-label="Close cart">Close</button></div>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div class="note">Total</div>
+        <div style="font-weight:800" id="cartTotal">₹0</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="btn" id="checkoutBtn">Checkout via WhatsApp</button>
+        <button class="btn ghost" id="clearCartBtn">Clear</button>
+      </div>
+    </div>
+  </aside>
+
+  <script>
+    // Product data
+    const products = [
+      {id: 'basmati', name: 'Basmati Rice', price: 90, desc: 'Aromatic long-grain basmati rice, perfect for biryani and pulao.', img: 'https://imgs.search.brave.com/7xJYMkDUPA34f-Ff3nxLOAFyzsFx8a1zDN1MFOtGK3I/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdC5k/ZXBvc2l0cGhvdG9z/LmNvbS8yMjUyNTQx/LzIzOTQvaS80NTAv/ZGVwb3NpdHBob3Rv/c18yMzk0ODM0Ny1z/dG9jay1waG90by1i/YXNtYXRpLXJpY2Uu/anBn'},
+      {id: 'khusboo', name: 'Khusboo Biryani Rice', price: 80, desc: 'Fragrant biryani blend that absorbs flavors beautifully.', img: 'https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=900&auto=format&fit=crop'},
+      {id: 'indrayani', name: 'Indrayani Rice', price: 70, desc: 'Soft and fluffy — great for everyday meals.', img: 'https://images.unsplash.com/photo-1544025163-3c2c2f2c9f8b?q=80&w=900&auto=format&fit=crop'},
+      {id: 'daptari', name: 'Daptari Rice', price: 80, desc: 'Reliable quality rice, widely used in households.', img: 'https://images.unsplash.com/photo-1611078483134-6b3f2f7d2e3c?q=80&w=900&auto=format&fit=crop'},
+      {id: 'chiman', name: 'Chimansaal Rice', price: 80, desc: 'Traditional variety known for its texture.', img: 'https://images.unsplash.com/photo-1525755662778-989d0524087e?q=80&w=900&auto=format&fit=crop'}
+    ];
+
+    // Cart structure: {id, name, price, qty}
+    let cart = [];
+
+    // Utilities
+    function $(s){return document.querySelector(s)}
+    function $$ (s){return document.querySelectorAll(s)}
+
+    // Render product grid
+    function renderProducts(){
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+      products.forEach(p => {
+        const div = document.createElement('div');
+        div.className = 'card';
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" loading="lazy">
+          <div style="padding-top:10px">
+            <div style="display:flex;align-items:center;justify-content:space-between">
+              <div style="font-weight:700">${p.name}</div>
+              <div class="price">₹${p.price}/kg</div>
+            </div>
+            <div class="desc">${p.desc}</div>
+            <div style="margin-top:10px;display:flex;gap:8px;align-items:center">
+              <button class="btn" aria-label="Order ${p.name}" onclick="quickOrder('${p.id}')">Order</button>
+              <button class="btn ghost" aria-label="Add ${p.name} to cart" onclick="addToCart('${p.id}')">Add to cart</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    // Local storage persistence
+    function saveCart(){ localStorage.setItem('pimpale_cart', JSON.stringify(cart)); updateCartUI(); }
+    function loadCart(){ const raw = localStorage.getItem('pimpale_cart'); cart = raw ? JSON.parse(raw) : []; updateCartUI(); }
+
+    // Cart operations
+    function addToCart(id, qty = 1){
+      const p = products.find(x => x.id === id);
+      if(!p) return;
+      const existing = cart.find(i => i.id === id);
+      if(existing){ existing.qty += qty; }
+      else { cart.push({id: p.id, name: p.name, price: p.price, qty}); }
+      saveCart();
+      toast(`${p.name} added to cart`);
+    }
+
+    function updateQuantity(id, delta){
+      const item = cart.find(i => i.id === id);
+      if(!item) return;
+      item.qty += delta;
+      if(item.qty <= 0){ cart = cart.filter(i => i.id !== id); }
+      saveCart();
+    }
+
+    function removeItem(id){ cart = cart.filter(i => i.id !== id); saveCart(); }
+
+    function clearCart(){ cart = []; saveCart(); }
+
+    // Compute totals
+    function cartTotal(){ return cart.reduce((s,i) => s + (i.price * i.qty), 0); }
+    function cartCount(){ return cart.reduce((s,i) => s + i.qty, 0); }
+
+    // Render cart UI
+    function updateCartUI(){
+      const countEl = document.getElementById('cartCount');
+      const itemsEl = document.getElementById('cartItems');
+      const totalEl = document.getElementById('cartTotal');
+      countEl.textContent = cartCount();
+      totalEl.textContent = `₹${cartTotal()}`;
+      itemsEl.innerHTML = '';
+      if(cart.length === 0){ itemsEl.innerHTML = '<div class="note">Your cart is empty.</div>'; return; }
+      cart.forEach(item => {
+        const imgSrc = (products.find(p => p.id === item.id) || {}).img || '';
+        const row = document.createElement('div'); row.className = 'cart-row';
+        row.innerHTML = `
+          <img src="${imgSrc}" alt="${item.name}" loading="lazy">
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:700">${item.name}</div><div class="price">₹${item.price}/kg</div></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+              <div class="qty">
+                <button aria-label="Decrease quantity of ${item.name}" onclick="updateQuantity('${item.id}', -1)">-</button>
+                <div class="note" style="min-width:26px;text-align:center">${item.qty} kg</div>
+                <button aria-label="Increase quantity of ${item.name}" onclick="updateQuantity('${item.id}', 1)">+</button>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end">
+                <div style="font-weight:700">₹${item.price * item.qty}</div>
+                <button class="ghost" style="margin-top:6px" onclick="removeItem('${item.id}')">Remove</button>
+              </div>
+            </div>
+          </div>
+        `;
+        itemsEl.appendChild(row);
+      });
+    }
+
+    // Quick order: single product prompt
+    function quickOrder(id){
+      const p = products.find(x => x.id === id);
+      if(!p) return;
+      const qty = prompt(`Quantity (kg) for ${p.name}:`, '10');
+      if(!qty) return alert('Order cancelled');
+      const msg = `Hello, I want to order ${qty} kg of ${p.name} (₹${p.price}/kg) from Pimpale Traders.`;
+      const link = `https://wa.me/919112295256?text=${encodeURIComponent(msg)}`;
+      window.open(link, '_blank', 'noopener');
+    }
+
+    // Checkout: format cart into a message and open WhatsApp
+    function checkout(){
+      if(cart.length === 0) return alert('Cart is empty');
+      const lines = ['Hello, I would like to place an order from Pimpale Traders:', ''];
+      cart.forEach(i => lines.push(`${i.qty} kg × ${i.name} @ ₹${i.price}/kg = ₹${i.qty * i.price}`));
+      lines.push('');
+      lines.push(`Total: ₹${cartTotal()}`);
+      lines.push('Pickup/Delivery: (please mention)');
+      const msg = lines.join('\n');
+      const link = `https://wa.me/919112295256?text=${encodeURIComponent(msg)}`;
+      window.open(link, '_blank', 'noopener');
+    }
+
+    // Small toast
+    function toast(text){
+      const t = document.createElement('div');
+      t.textContent = text; t.style.position='fixed'; t.style.left='50%'; t.style.transform='translateX(-50%)'; t.style.bottom='90px'; t.style.background='rgba(15,23,42,0.9)'; t.style.color='white'; t.style.padding='8px 12px'; t.style.borderRadius='999px'; t.style.zIndex=9999; document.body.appendChild(t);
+      setTimeout(()=>{ t.style.transition='opacity .2s'; t.style.opacity=0; setTimeout(()=>t.remove(),220); },1600);
+    }
+
+    // Drawer open/close
+    const cartDrawer = document.getElementById('cartDrawer');
+    function openCart(){ cartDrawer.classList.add('open'); cartDrawer.setAttribute('aria-hidden','false'); }
+    function closeCart(){ cartDrawer.classList.remove('open'); cartDrawer.setAttribute('aria-hidden','true'); }
+
+    // UI wiring
+    document.getElementById('openCartBtn').addEventListener('click', openCart);
+    document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+    document.getElementById('checkoutBtn').addEventListener('click', checkout);
+    document.getElementById('clearCartBtn').addEventListener('click', () => { if(confirm('Clear cart?')) clearCart(); });
+
+    // Helpers
+    function scrollToSection(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+    // Initialisation
+    renderProducts(); loadCart();
+
+    // Save cart whenever updated (debounced by simple interval)
+    setInterval(() => saveCart(), 2000);
+  </script>
+</body>
+</html>
