@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Pimpale Traders — Quality Rice</title>
-  <meta name="description" content="Pimpale Traders — Premium rice wholesaler & retailer. Basmati, Indrayani, Daptari & more. Bulk orders welcome.">
-  <meta property="og:title" content="Pimpale Traders — Quality Rice">
+  <title>M. Pimpale Traders — Quality Rice</title>
+  <meta name="description" content="M. Pimpale Traders — Premium rice wholesaler & retailer. Basmati, Indrayani, Daptari & more. Bulk orders welcome.">
+  <meta property="og:title" content="M. Pimpale Traders — Quality Rice">
   <meta property="og:description" content="Premium rice varieties at honest prices.">
   <meta property="og:type" content="website">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Store",
-    "name": "Pimpale Traders",
+    "name": "M. Pimpale Traders",
     "description": "Family-run rice wholesaler and retailer providing premium quality rice.",
     "telephone": "+919112295256",
     "address": {
@@ -73,7 +73,7 @@
     <div class="brand">
       <div class="logo" aria-hidden>PT</div>
       <div>
-        <h1>Pimpale Traders</h1>
+        <h1>M. Pimpale Traders</h1>
         <div class="note">Quality rice • Fresh stock • Wholesale & Retail</div>
       </div>
     </div>
@@ -88,7 +88,7 @@
   <main class="container">
     <section class="hero">
       <div class="hero-card">
-        <h2>Welcome to Pimpale Traders</h2>
+        <h2>Welcome to M. Pimpale Traders</h2>
         <p>Supplying premium rice varieties at honest prices. Fresh, clean, and perfect for every meal — from everyday rice to special biryani blends.</p>
         <div class="hero-cta">
           <button class="btn" onclick="scrollToSection('products')">See Products</button>
@@ -110,7 +110,7 @@
     </section>
 
     <section id="about" style="margin-top:28px">
-      <h3>About Pimpale Traders</h3>
+      <h3>About M. Pimpale Traders</h3>
       <p class="note">We are a family-run rice wholesaler and retailer focused on delivering clean, high-quality rice varieties. Trusted by local restaurants and households. If you'd like custom packaging or branded sacks, message us!</p>
     </section>
 
@@ -131,7 +131,7 @@
     </section>
 
     <footer>
-      <div class="note">© Pimpale Traders — All rights reserved.</div>
+      <div class="note">© M. Pimpale Traders — All rights reserved.</div>
     </footer>
   </main>
 
@@ -164,7 +164,7 @@
       {id: 'chiman', name: 'Chimansaal Rice', price: 80, desc: 'Traditional variety known for its texture.', img: 'https://imgs.search.brave.com/y8ZpGdyU45_ERoayAQjiObpG0d20A71EUjZUyC8ZHW8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9vb29m/YXJtcy5jb20vY2Ru/L3Nob3AvcHJvZHVj/dHMvT09PX0Zhcm1z/X0NoaW1hbnNhYWxf/UmljZV9TZW1pcG9s/aXNoZWQuanBnP3Y9/MTczODY1MDQ5NCZ3/aWR0aD0xMTAw'},
       {id: 'udid_papad', name: 'Udid dal Papad', price: 400, unit: 'packet', desc: 'Crispy urad dal papad — perfect accompaniment to meals.', img: 'images/udiddal.jpg'},
       {id: 'kurdai_papad', name: 'Kurdai Papad', price: 230, unit: 'packet', desc: 'Light, crunchy papad made from moong dal.', img: 'images/kurdai.jpg'},
-      {id: 'nachani_papad', name: 'Nachani che Papad', price: 180, unit: 'packet', desc: 'Spiced papad with a punch of flavors.', img: 'images/nachani.jpg'}
+      {id: 'nachani_papad', name: 'Nachani che Papad', price: 80, unit: 'packet', desc: 'Spiced papad with a punch of flavors.', img: 'images/nachani.jpg'}
     ];
 
     // Cart structure: {id, name, price, qty}
@@ -269,7 +269,7 @@
       if(!p) return;
       const qty = prompt(`Quantity (kg) for ${p.name}:`, '10');
       if(!qty) return alert('Order cancelled');
-      const msg = `Hello, I want to order ${qty} kg of ${p.name} (₹${p.price}/kg) from Pimpale Traders.`;
+      const msg = `Hello, I want to order ${qty} kg of ${p.name} (₹${p.price}/kg) from M. Pimpale Traders.`;
       const link = `https://wa.me/919112295256?text=${encodeURIComponent(msg)}`;
       window.open(link, '_blank', 'noopener');
     }
@@ -277,7 +277,7 @@
     // Checkout: format cart into a message and open WhatsApp
     function checkout(){
       if(cart.length === 0) return alert('Cart is empty');
-      const lines = ['Hello, I would like to place an order from Pimpale Traders:', ''];
+      const lines = ['Hello, I would like to place an order from M. Pimpale Traders:', ''];
       cart.forEach(i => lines.push(`${i.qty} kg × ${i.name} @ ₹${i.price}/kg = ₹${i.qty * i.price}`));
       lines.push('');
       lines.push(`Total: ₹${cartTotal()}`);
@@ -315,5 +315,4 @@
     setInterval(() => saveCart(), 2000);
   </script>
 </body>
-
 </html>
