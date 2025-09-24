@@ -1,8 +1,7 @@
 <?php
 /**
  * Enhanced API for M. Pimpale Traders E-commerce System
- * 
- * Features:
+ * * Features:
  * - Rate limiting
  * - Input validation and sanitization
  * - Comprehensive error handling
@@ -95,6 +94,11 @@ class ApiHandler {
                     
                 case 'GET status':
                     $this->getSystemStatus();
+                    break;
+
+                // NEW LOGIN ENDPOINT
+                case 'POST login':
+                    $this->login();
                     break;
                 
                 // Admin endpoints
@@ -219,6 +223,25 @@ class ApiHandler {
         }
         
         $this->sendSuccess($status);
+    }
+
+    private function login() {
+        $input = $this->getJsonInput();
+        $user = $input['username'] ?? '';
+        $pass = $input['password'] ?? '';
+
+        // Use hash_equals for timing-attack-safe comparison
+        // IMPORTANT: Change 'pimpale123' to Config::ADMIN_PASS after you set a strong password in config.php
+        if (hash_equals(Config::ADMIN_USER, $user) && hash_equals(Config::ADMIN_PASS, $pass)) {
+            $_SESSION['is_admin_logged_in'] = true;
+            $_SESSION['session_start_time'] = time();
+            
+            $this->sendSuccess(['message' => 'Login successful']);
+        } else {
+            // Invalidate session on failed login attempt
+            unset($_SESSION['is_admin_logged_in']);
+            $this->sendError(401, 'Invalid credentials');
+        }
     }
     
     // Admin endpoint handlers
@@ -393,29 +416,16 @@ class ApiHandler {
     }
     
     private function requireAuth() {
-        if (!$this->checkAuth()) {
-            $this->sendError(401, 'Authentication required', 'Please provide valid credentials');
-        }
-    }
-    
-    private function checkAuth() {
-        $headers = getallheaders();
-        $auth = $headers['Authorization'] ?? $headers['authorization'] ?? '';
-        
-        if (strpos($auth, 'Basic ') !== 0) {
-            return false;
+        // Check if the session variable is set and not expired
+        if (!isset($_SESSION['is_admin_logged_in']) || $_SESSION['is_admin_logged_in'] !== true) {
+            $this->sendError(401, 'Authentication required');
         }
         
-        $credentials = base64_decode(substr($auth, 6));
-        
-        if (strpos($credentials, ':') === false) {
-            return false;
+        // Optional: Session timeout check
+        if ((time() - $_SESSION['session_start_time']) > Config::SESSION_TIMEOUT) {
+            session_destroy();
+            $this->sendError(401, 'Session expired, please login again');
         }
-        
-        list($user, $pass) = explode(':', $credentials, 2);
-        
-        // Constant-time comparison to prevent timing attacks
-        return hash_equals(Config::ADMIN_USER, $user) && hash_equals(Config::ADMIN_PASS, $pass);
     }
     
     private function getClientIp() {
@@ -474,7 +484,8 @@ class ApiHandler {
                 'POST ?endpoint=order - Create order',
                 'GET ?endpoint=status - System status'
             ],
-            'Admin endpoints (require Basic Auth):' => [
+            'Admin endpoints (require Auth):' => [
+                'POST ?endpoint=login - Login to admin panel',
                 'GET ?endpoint=admin/products - Get all products',
                 'POST ?endpoint=admin/product - Create product',
                 'PUT ?endpoint=admin/product&id=X - Update product',
@@ -572,3 +583,4 @@ try {
         'details' => Config::DEBUG_MODE ? $e->getMessage() : 'Please contact support'
     ]);
 }
+?>

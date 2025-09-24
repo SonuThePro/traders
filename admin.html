@@ -577,11 +577,9 @@
     </header>
 
     <div class="container">
-        <!-- Alert System -->
         <div class="alert success" id="successAlert" role="alert"></div>
         <div class="alert error" id="errorAlert" role="alert"></div>
 
-        <!-- Login Form (shown first) -->
         <div id="loginForm" style="max-width: 400px; margin: 50px auto;">
             <div class="tab-content active">
                 <h2 style="text-align: center; margin-bottom: var(--spacing-xl);">Admin Login</h2>
@@ -591,7 +589,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="password" class="form-control" value="pimpale123" autocomplete="current-password">
+                    <input type="password" id="password" class="form-control" value="" autocomplete="current-password" placeholder="Enter your password">
                 </div>
                 <div class="form-actions">
                     <button class="btn" onclick="login()" style="width: 100%;">Login</button>
@@ -599,21 +597,17 @@
             </div>
         </div>
 
-        <!-- Main Admin Panel (hidden initially) -->
         <div id="adminPanel" style="display: none;">
-            <!-- Mobile-friendly Navigation -->
             <nav class="tab-nav" role="tablist" aria-label="Admin sections">
-                <button class="tab-btn active" role="tab" aria-selected="true" onclick="showTab('dashboard')">Dashboard</button>
-                <button class="tab-btn" role="tab" aria-selected="false" onclick="showTab('products')">Products</button>
-                <button class="tab-btn" role="tab" aria-selected="false" onclick="showTab('add-product')">Add Product</button>
-                <button class="tab-btn" role="tab" aria-selected="false" onclick="showTab('orders')">Orders</button>
+                <button class="tab-btn active" role="tab" aria-selected="true" onclick="showTab('dashboard', this)">Dashboard</button>
+                <button class="tab-btn" role="tab" aria-selected="false" onclick="showTab('products', this)">Products</button>
+                <button class="tab-btn" role="tab" aria-selected="false" onclick="showTab('add-product', this)">Add Product</button>
+                <button class="tab-btn" role="tab" aria-selected="false" onclick="showTab('orders', this)">Orders</button>
             </nav>
 
-            <!-- Dashboard Tab -->
             <div id="dashboard" class="tab-content active" role="tabpanel">
                 <h2>Dashboard Overview</h2>
                 
-                <!-- Status indicator -->
                 <div style="margin-bottom: var(--spacing-lg);">
                     <div class="status-indicator">
                         <div class="status-dot"></div>
@@ -623,29 +617,28 @@
                 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <div class="stat-number" id="totalProducts">8</div>
+                        <div class="stat-number" id="totalProducts">...</div>
                         <div class="stat-label">Total Products</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="totalOrders">0</div>
-                        <div class="stat-label">Orders Today</div>
+                        <div class="stat-label">Orders (30d)</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="totalRevenue">₹0</div>
-                        <div class="stat-label">Revenue Today</div>
+                        <div class="stat-label">Revenue (30d)</div>
                     </div>
                     <div class="stat-card">
                         <div class="stat-number" id="avgOrderValue">₹0</div>
-                        <div class="stat-label">Avg Order</div>
+                        <div class="stat-label">Avg Order (30d)</div>
                     </div>
                 </div>
                 
                 <p style="color: var(--color-muted); font-size: 0.875rem;">
-                    💡 <strong>Note:</strong> This is a demo with sample data. Once connected to your database, real analytics will appear here.
+                    💡 <strong>Note:</strong> Dashboard is now connected to your database. Analytics for orders and revenue will update as you log orders via the API.
                 </p>
             </div>
 
-            <!-- Products Tab -->
             <div id="products" class="tab-content" role="tabpanel">
                 <h2>Manage Products</h2>
                 
@@ -654,59 +647,9 @@
                     <span>Loading products...</span>
                 </div>
                 
-                <div class="product-list" id="productList">
-                    <!-- Sample products for demo -->
-                    <div class="product-item">
-                        <div class="product-header">
-                            <div class="product-info">
-                                <h3>Basmati Rice</h3>
-                                <div class="product-price">₹90/kg</div>
-                            </div>
-                        </div>
-                        <div class="product-description">
-                            Aromatic long-grain basmati rice, perfect for biryani and pulao.
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn" onclick="editProduct(1)">Edit</button>
-                            <button class="btn btn-danger" onclick="deleteProduct(1)">Delete</button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-item">
-                        <div class="product-header">
-                            <div class="product-info">
-                                <h3>Khusboo Biryani Rice</h3>
-                                <div class="product-price">₹80/kg</div>
-                            </div>
-                        </div>
-                        <div class="product-description">
-                            Fragrant biryani blend that absorbs flavors beautifully.
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn" onclick="editProduct(2)">Edit</button>
-                            <button class="btn btn-danger" onclick="deleteProduct(2)">Delete</button>
-                        </div>
-                    </div>
-                    
-                    <div class="product-item">
-                        <div class="product-header">
-                            <div class="product-info">
-                                <h3>Indrayani Rice</h3>
-                                <div class="product-price">₹70/kg</div>
-                            </div>
-                        </div>
-                        <div class="product-description">
-                            Soft and fluffy — great for everyday meals.
-                        </div>
-                        <div class="product-actions">
-                            <button class="btn" onclick="editProduct(3)">Edit</button>
-                            <button class="btn btn-danger" onclick="deleteProduct(3)">Delete</button>
-                        </div>
-                    </div>
-                </div>
+                <div class="product-list" id="productList"></div>
             </div>
 
-            <!-- Add Product Tab -->
             <div id="add-product" class="tab-content" role="tabpanel">
                 <h2>Add New Product</h2>
                 
@@ -766,7 +709,6 @@
                 </form>
             </div>
 
-            <!-- Orders Tab -->
             <div id="orders" class="tab-content" role="tabpanel">
                 <h2>Order Management</h2>
                 
@@ -783,7 +725,7 @@
                 
                 <p style="color: var(--color-muted); margin-bottom: var(--spacing-lg);">
                     📱 <strong>Current Process:</strong> Orders are received via WhatsApp and processed manually. 
-                    In Phase 2, we'll add digital order management with status tracking.
+                    You can use the API to log these orders to track analytics.
                 </p>
                 
                 <div style="background: var(--color-background); padding: var(--spacing-lg); border-radius: var(--radius-lg); border: 1px solid var(--color-border);">
@@ -792,7 +734,7 @@
                         <a href="https://wa.me/919112295256" target="_blank" class="btn" style="text-decoration: none;">
                             Open WhatsApp
                         </a>
-                        <button class="btn btn-secondary" onclick="alert('Feature coming in Phase 2')">
+                        <button class="btn btn-secondary" onclick="alert('Feature coming soon!')">
                             View All Orders
                         </button>
                     </div>
@@ -802,51 +744,68 @@
     </div>
 
     <script>
-        // Enhanced JavaScript with mobile optimizations
+        // Enhanced JavaScript with mobile optimizations and server-side authentication
         let isAuthenticated = false;
-        
-        function login() {
+
+        async function login() {
             const username = document.getElementById('username').value;
             const password = document.getElementById('password').value;
-            
-            if (username === 'admin' && password === 'pimpale123') {
-                isAuthenticated = true;
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                showMessage('Login successful! Welcome to admin panel.', 'success');
-                
-                // Focus management for accessibility
-                setTimeout(() => {
-                    document.querySelector('.tab-btn.active').focus();
-                }, 100);
-            } else {
-                showMessage('Invalid credentials. Please try again.', 'error');
-                // Shake animation for error
+            const loginButton = document.querySelector('#loginForm .btn');
+
+            loginButton.disabled = true;
+            loginButton.textContent = 'Logging in...';
+
+            try {
+                const response = await fetch('api.php?endpoint=login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    isAuthenticated = true;
+                    document.getElementById('loginForm').style.display = 'none';
+                    document.getElementById('adminPanel').style.display = 'block';
+                    showMessage('Login successful! Welcome to the admin panel.', 'success');
+                    
+                    // Load data for the admin panel now that we are logged in
+                    loadAdminProducts(); 
+                    loadDashboardStats();
+                } else {
+                    throw new Error(result.error || 'Invalid credentials');
+                }
+            } catch (error) {
+                showMessage(error.message, 'error');
                 const loginForm = document.getElementById('loginForm');
                 loginForm.style.animation = 'shake 0.5s ease-in-out';
-                setTimeout(() => {
-                    loginForm.style.animation = '';
-                }, 500);
+                setTimeout(() => { loginForm.style.animation = ''; }, 500);
+            } finally {
+                loginButton.disabled = false;
+                loginButton.textContent = 'Login';
             }
         }
-        
-        function logout() {
-            if (confirm('Are you sure you want to logout?')) {
+
+        function logout(silent = false) {
+            const performLogout = () => {
                 isAuthenticated = false;
                 document.getElementById('adminPanel').style.display = 'none';
                 document.getElementById('loginForm').style.display = 'block';
-                
-                // Clear form fields
-                document.getElementById('username').value = 'admin';
-                document.getElementById('password').value = 'pimpale123';
-                
-                showMessage('Logged out successfully.', 'success');
+                document.getElementById('password').value = ''; // Clear password field
+                if (!silent) {
+                    showMessage('Logged out successfully.', 'success');
+                }
+            };
+
+            if (silent) {
+                performLogout();
+            } else if (confirm('Are you sure you want to logout?')) {
+                performLogout();
             }
         }
-        
-        function showTab(tabName) 
-        {
-            // Update ARIA attributes
+
+        function showTab(tabName, clickedButton) {
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('active');
                 btn.setAttribute('aria-selected', 'false');
@@ -856,10 +815,120 @@
                 content.classList.remove('active');
             });
             
-            // Show selected tab
-            const activeBtn = event.target;
-            const activeContent = document.getElementById(tabName);
+            clickedButton.classList.add('active');
+            clickedButton.setAttribute('aria-selected', 'true');
+            document.getElementById(tabName).classList.add('active');
+        }
+
+        async function fetchApi(endpoint, options = {}) {
+            const response = await fetch(`api.php?endpoint=${endpoint}`, options);
+            if (!response.ok && response.status !== 401) {
+                throw new Error('Network response was not ok');
+            }
+            const result = await response.json();
+            if (!result.success) {
+                if (response.status === 401) {
+                    logout(true); // silent logout
+                }
+                throw new Error(result.error || 'API Error');
+            }
+            return result.data;
+        }
+
+        async function loadAdminProducts() {
+            const productListDiv = document.getElementById('productList');
+            const loadingDiv = document.getElementById('productsLoading');
             
-            activeBtn.classList.add('active');
-            activeBtn.setAttribute('aria-selected', 'true');
-        }    
+            loadingDiv.style.display = 'flex';
+            productListDiv.innerHTML = ''; // Clear previous content
+
+            try {
+                const data = await fetchApi('admin/products?include_inactive=true');
+                
+                if (data.products.length === 0) {
+                    productListDiv.innerHTML = '<p>No products found. Add one using the "Add Product" tab!</p>';
+                    return;
+                }
+
+                data.products.forEach(product => {
+                    const productItem = document.createElement('div');
+                    productItem.className = 'product-item';
+                    productItem.innerHTML = `
+                        <div class="product-header">
+                            <div class="product-info">
+                                <h3>${escapeHtml(product.name)} <span style="font-weight:400; color: ${product.active ? 'var(--color-success)' : 'var(--color-error)'};">${product.active ? '' : '(Inactive)'}</span></h3>
+                                <div class="product-price">₹${product.price}/${product.unit}</div>
+                            </div>
+                        </div>
+                        <div class="product-description">
+                            ${escapeHtml(product.description || 'No description.')}
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn" onclick="editProduct(${product.id})">Edit</button>
+                            <button class="btn btn-danger" onclick="deleteProduct(${product.id})">Delete</button>
+                        </div>
+                    `;
+                    productListDiv.appendChild(productItem);
+                });
+            } catch (error) {
+                showMessage('Failed to load products: ' + error.message, 'error');
+            } finally {
+                loadingDiv.style.display = 'none';
+            }
+        }
+
+        async function loadDashboardStats() {
+            try {
+                const productData = await fetchApi('admin/products');
+                document.getElementById('totalProducts').textContent = productData.count;
+
+                const analyticsData = await fetchApi('admin/analytics?days=30');
+                document.getElementById('totalOrders').textContent = analyticsData.total_orders;
+                document.getElementById('totalRevenue').textContent = `₹${Math.round(analyticsData.total_revenue).toLocaleString('en-IN')}`;
+                document.getElementById('avgOrderValue').textContent = `₹${Math.round(analyticsData.avg_order_value).toLocaleString('en-IN')}`;
+
+            } catch(error) {
+                 console.error("Could not load dashboard stats", error);
+                 showMessage('Could not load dashboard stats.', 'error');
+            }
+        }
+
+        function submitProduct(event) {
+            event.preventDefault();
+            alert('Functionality to add product via API coming soon!');
+            // Here you would gather form data and call fetchApi('admin/product', { method: 'POST', body: ... })
+        }
+        
+        function clearForm() {
+            document.getElementById('productForm').reset();
+        }
+
+        function editProduct(id) {
+            alert('Edit functionality for product ' + id + ' coming soon!');
+        }
+
+        function deleteProduct(id) {
+            if (confirm('Are you sure you want to mark this product as inactive?')) {
+                // Here you would call fetchApi('admin/product?id=' + id, { method: 'DELETE' })
+                alert('Delete functionality for product ' + id + ' coming soon!');
+            }
+        }
+
+        function showMessage(message, type = 'success') {
+            const alertDiv = type === 'error' ? document.getElementById('errorAlert') : document.getElementById('successAlert');
+            alertDiv.textContent = message;
+            alertDiv.classList.add('show');
+            setTimeout(() => {
+                alertDiv.classList.remove('show');
+            }, 4000);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+    </script>
+</body>
+</html>
